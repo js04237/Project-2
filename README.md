@@ -1,7 +1,5 @@
 # Project-2
 
-![Test Image 1](https://images.app.goo.gl/Ugv4THbC5FJEVMLj6)
-
 
 
 
