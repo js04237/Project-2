@@ -1,4 +1,4 @@
-drop table marine_mammal;
+
 
 create table marine_mammal (
     id VARCHAR(100) not null,
@@ -18,4 +18,4 @@ create table marine_mammal (
 
 );
 
-SELECT * FROM marine_mammal;
+Select * from marine_mammal
