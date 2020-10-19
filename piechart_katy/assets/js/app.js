@@ -31,9 +31,13 @@ function buildPlot(podChoice) {
             data_labels.push(k);
             data_values.push(final_data[k])
         })
+        var ultimateColors = ['rgb(56, 75, 126)', 'rgb(18, 36, 37)', 'rgb(34, 53, 101)', 'rgb(36, 55, 57)', 'rgb(6, 4, 4)'];
         var data1 = [{
             values: data_values,
             labels: data_labels,
+            marker: {
+                colors: ultimateColors
+              },
             type: 'pie'
         }]
         var layout = {
