@@ -154,7 +154,8 @@ function updateLegend(sightingCount) {
 // Marine mammal sightings website
 // url = "http://hotline.whalemuseum.org/api.json?&limit=10000"
 
-url = "http://127.0.0.1:5000/api/v1.0/mammal_sightings"
+// url = "http://127.0.0.1:5000/api/v1.0/mammal_sightings"
+url = "/api/v1.0/mammal_sightings";
 
 // Perform an API call to the website to create markers
 d3.json(url, plotSightings);
