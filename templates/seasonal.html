@@ -14,7 +14,7 @@
 
 <body>
     <nav class="nav navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">Home</a>
+        <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,8 +46,28 @@
         </div>
     </nav>
     <h1>Open the console!</h1>
-    <div id="bar"></div>
-    <div id="bubble"></div>
+    <section class="row">
+
+        <!-- <div class="row justify-content-center"> -->
+        <div class="col-12 col-xl-8 col-lg-8 col-md-6">
+            <!-- <div class="well"> -->
+            <h5>Select Location</h5>
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+    </section>
+    <section class="row">
+        <div class="col-12 col-xl-6 col-lg-6 col-md-6">
+
+            <div id="bar"></div>
+        </div>
+    </section>
+    <section class="row">
+
+        <div class="col-12 col-xl-5 col-lg-5 col-md-5">
+
+            <div id="bubble"></div>
+        </div>
+    </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
     <script src="../static/js/dates.js"></script>
   

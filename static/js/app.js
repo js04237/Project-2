@@ -1,7 +1,7 @@
 function buildPlot(podChoice) {
 
-    url = "http://hotline.whalemuseum.org/api.json?limit=10000";
-    // url = "/api/v1.0/mammal_sightings";
+    // url = "http://hotline.whalemuseum.org/api.json?limit=10000";
+    url = "/api/v1.0/mammal_sightings";
     d3.json(url).then(function (whaledata) {
         //console.log(whaledata);
         var tdata = whaledata.filter(d => d.hasOwnProperty("orca_pod"));
