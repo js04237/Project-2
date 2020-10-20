@@ -56,43 +56,42 @@ info.addTo(map);
 // Initialize an object containing icons for each layer group
 var icons = {
   orca: L.ExtraMarkers.icon({
-    icon: "ion-settings",
+    icon: "ion-fireball",
     iconColor: "white",
-    markerColor: "yellow",
-    shape: "star"
+    markerColor: "orange",
+    shape: "circle"
   }),
   grayWhale: L.ExtraMarkers.icon({
-    icon: "ion-android-bicycle",
+    icon: "ion-checkmark-circled",
     iconColor: "white",
     markerColor: "red",
     shape: "circle"
   }),
   porpoise: L.ExtraMarkers.icon({
-    icon: "ion-minus-circled",
+    icon: "ion-star",
     iconColor: "white",
-    markerColor: "blue-dark",
-    shape: "penta"
+    markerColor: "blue",
+    shape: "circle"
   }),
   humpback: L.ExtraMarkers.icon({
-    icon: "ion-android-bicycle",
+    icon: "ion-flash",
     iconColor: "white",
-    markerColor: "orange",
+    markerColor: "green",
     shape: "circle"
   })
 };
 
 function plotSightings(response) {
 
+  // Create a counter for mammal sightings
   var sightingCount = {
     orca: 0,
     grayWhale: 0,
     porpoise: 0,
     humpback: 0,
   };
-  console.log(response)
+
   data = response
-  
-  var speciesCode;
 
   // Loop through the stations array
   for (var i = 0; i < data.length; i++) {
@@ -101,7 +100,7 @@ function plotSightings(response) {
     var lat = sighting.latitude;
     var species = sighting.species;
     var place = sighting.location;
-    var date = Date(sighting.sighted_at)
+    var date = sighting.sighted_at.slice(0,16)
 
     if (species == "orca") {
       speciesCode = "orca"
@@ -112,7 +111,7 @@ function plotSightings(response) {
     if (species == "harbor porpoise") {
       speciesCode = "porpoise"
     }
-    else if (species == "humpback whale") {
+    else if (species == "humpback") {
       speciesCode = "humpback"
     }
 
@@ -127,29 +126,35 @@ function plotSightings(response) {
   
     newMarker.bindPopup("<h3>Species: " + species + "</h3>" + 
       "<h3>Place: " + place + "</h3>" +
-      "<h3>Date: " + date + "</h3>")
-      ;
+      "<h3>Date: " + date + "</h3>"
+    );
 
-    //   newMarker.on("mouseover", function(e) {
-    //   this.openPopup()
-    // });
-    // newMarker.on("mouseout", function(e) {
-    //   this.closePopup()
-    // });
+    newMarker.on("mouseover", function(e) {
+      this.openPopup()
+    });
+    newMarker.on("mouseout", function(e) {
+      this.closePopup()
+    });
 
-    newMarker.addTo(layers[speciesCode]);
-    // Markers appear on mouseover
-
-    // Add each marker to an array
-    // sightingMarkers.push(sightingMarker);
+    updateLegend(sightingCount);
   }
 
-  // Create a layer group made from the sightings markers array, pass it into the createMap function
-  // createMap(L.layerGroup(newMarker));
+}
+
+function updateLegend(sightingCount) {
+  document.querySelector(".legend").innerHTML = [
+    "<p><h2>Sightings Count: " + "</h1></p>", 
+    "<p class='orca'>Orcas: " + sightingCount.orca + "</p>",
+    "<p class='grayWhale'>Gray Whales: " + sightingCount.grayWhale + "</p>",
+    "<p class='porpoise'>Harbor Porpoises: " + sightingCount.porpoise + "</p>",
+    "<p class='humpback'>Humpback Whales: " + sightingCount.humpback + "</p>"
+  ].join("");
 }
 
 // Marine mammal sightings website
-url = "http://hotline.whalemuseum.org/api.json?&limit=10000"
+// url = "http://hotline.whalemuseum.org/api.json?&limit=10000"
+
+url = "http://127.0.0.1:5000/api/v1.0/mammal_sightings"
 
 // Perform an API call to the website to create markers
 d3.json(url, plotSightings);
