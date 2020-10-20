@@ -1,7 +1,7 @@
 # Project-2
 ## Marine Mammal Sightings in the Pacific Northwest & Canada
 
-![Marine Marine Mammal](Image/Project_2.JPG)
+![Marine Marine Mammal](Images/Project_2.JPG)
 
 
 
