@@ -42,6 +42,7 @@ function buildPlot(podChoice) {
             obj[v.orca_pod] = (obj[v.orca_pod] || 0) + 1;
             return obj;
         }, {})
+        delete pod_counts.null;
         console.log(pod_counts);
         console.log(podChoice);
         var final_data = {};
