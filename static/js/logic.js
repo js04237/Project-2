@@ -56,25 +56,21 @@ info.addTo(map);
 // Initialize an object containing icons for each layer group
 var icons = {
   orca: L.ExtraMarkers.icon({
-    icon: "ion-fireball",
     iconColor: "white",
     markerColor: "orange",
     shape: "circle"
   }),
   grayWhale: L.ExtraMarkers.icon({
-    icon: "ion-checkmark-circled",
     iconColor: "white",
     markerColor: "red",
     shape: "circle"
   }),
   porpoise: L.ExtraMarkers.icon({
-    icon: "ion-star",
     iconColor: "white",
     markerColor: "blue",
     shape: "circle"
   }),
   humpback: L.ExtraMarkers.icon({
-    icon: "ion-flash",
     iconColor: "white",
     markerColor: "green",
     shape: "circle"
