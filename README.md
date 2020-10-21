@@ -8,42 +8,63 @@
 * [Technologies](#technologies)
 * [Development Process](#development-process)
 * [Data Sources](#data-sources)
-* [Contact](#contact)
+* [Development Team](#development-team)
 
 ## Introduction
-Our team project was to create a website to help visualize marine mammal sightings by their location, time of year, and social patterns. We predominantly focused on orcas, as all but 5 of our datapoints were orcas. We utilized an API from the Whale Museum, which contained data in geoJSON format as well as city information, pod information, and day of sighting. We scraped the API, pulled it into PostgreSQL, used Sqlalchemy to connect to the database, and rendered our own API and routes using Flask. From here, we were able to build our website and create visualizations using Leaflet and Plotly. Finally, we utilized Heroku to deploy our website through Github. 
+
+Our team project was to create a website to  visualize marine mammal sightings. We predominantly focused on orcas, as all but 5 of our datapoints were orcas. We created a map for sightings utilizing different markers for different species, compared which pods were sighted together more often, and finally looked at the most active sighting locations and seasonal variations within those locations. 
+
+## Technologies
+1. Python
+    * Pymongo
+2. Beautiful Soup
+3. Splinter
+4. Selenium
+5. Pandas
+6. Sqlalchemy
+    * Session
+    * create_engine
+    * inspect
+    * func
+    * Column, 
+    * Float
+    * Integer
+    * String
+    * Date
+    * declarative_base
+7. Flask 
+    * render_template
+    * jsonify
+    * request
+    * redirect
+8. Flask_cors
+    * CORS
+9. Postgres
+10. HTML & CSS
+11. Bootstrap
+12. Javscript
+    * d3
+    * popper
+    * jquery
+    * Leaflet
+    * Plotly
+13. Mapbox
+14. Heroku
+15. Github
+
+
+## Development Process
+
+We utilized an API from the Whale Museum, which contained data in geoJSON format as well as city information, pod information, and day of sighting. We scraped the API, pulled it into PostgreSQL, used Sqlalchemy to connect to the database, and rendered our own API and routes using Flask. From here, we were able to build our website and create visualizations using Leaflet and Plotly. Finally, we utilized Heroku to deploy our website through Github. 
+
 
 ## Data Sources
 
-    http://hotline.whalemuseum.org/api.json?limit=10000
-    https://www.whaleresearch.com/
-
-
-## Description
-
-   Rationale: API data contains GeoJSON information to create maps, and the dataset is limited in scope but not too small. There is more data on marine mammal sightings beyond this API, but we didn’t find other data that was easily accessible. Also orcas are endangered, so it is of interest to study their habits and habitats in order to help raise awareness for the orcas.  
-
-
-            visualizations:
-    1.	Use GeoJSON data to map sightings with markers for different species 
-    2.	Use GeoJSON data to create a cluster and/or heatmap to visualize more active locations.
-    3.	Look at seasonal sightings to map potential migratory patterns of orca pods.
-    4.	Compare pod sightings to find where pods overlap and/or how frequently different pods interact together.
-
-
-
-
-
-## Questions
-
-
-
-
-
-
+1. http://hotline.whalemuseum.org/api.json?limit=10000
+2. https://www.whaleresearch.com/
 
 # Development Team 
-1. Katy Luquire
-2. Bandana Deo
-3. Jonathan Brian Stoger
-4. Seidi Mohammad
+1. [Katy Luquire](https://github.com/CatherineLuquire)
+2. [Bandana Deo](https://github.com/deobandana)
+3. [Jonathan Brian Stoger](https://github.com/js04237)
+4. [Seidi Mohammad](https://github.com/seidiali21)
