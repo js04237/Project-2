@@ -57,13 +57,13 @@ Our team project was to create a website to visualize marine mammal sightings. W
 ## Development Process
 
 We utilized an API from the Whale Museum, which contained data in geoJSON format as well as city information, pod information, and day of sighting. We scraped the API, pulled it into PostgreSQL, used Sqlalchemy to connect to the database, and rendered our own API and routes using Flask. From here, we were able to build our website and create visualizations using Leaflet and Plotly. Finally, we utilized Heroku to deploy our website through Github. The following images are a few of the visualzations we created for our website:
-1. [Pod Bar Chart](images/pod_bar.png)
+1. ![Pod Bar Chart](images/pod_bar.png)
 This bar chart shows that J Pod is usually spotted within their own pod, whereas K and L are usually spotted with other pods.
-2. [J Pod Pie](images/j_pod_pie.png)
+2. ![J Pod Pie](images/j_pod_pie.png)
 Pie chart shows the percentages of times the J Pod is found alone versus with other pods. The website contains a dropdown menu to navigate between each pod. 
-3. [Sightings Map](map_img.png)
+3. ![Sightings Map](map_img.png)
 This interactive map shows the many orca sightings within our dataset as well as 3 of the other 5 marine mammals sighted.
-3. [Most Active Locations](active_locations.png)
+3. ![Most Active Locations](active_locations.png)
 This chart shows Friday Harbor is by far the location with the most sightings compared to the rest of the locations. 
 
 
