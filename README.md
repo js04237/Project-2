@@ -11,17 +11,17 @@
 * [Development Team](#development-team)
 
 ## Introduction
-
-Our team project was to create a website to  visualize marine mammal sightings. We predominantly focused on orcas, as all but 5 of our datapoints were orcas. We created a map for sightings utilizing different markers for different species, compared which pods were sighted together more often, and finally looked at the most active sighting locations and seasonal variations within those locations. 
+[Marine Mammal Visualization Project](https://marine-mammals.herokuapp.com/)
+Our team project was to create a website to visualize marine mammal sightings. We predominantly focused on orcas, as all but 5 of our datapoints were orcas. We created a map for sightings utilizing different markers for different species, compared which pods were sighted together more often, and finally looked at the most active sighting locations and seasonal variations within those locations. 
 
 ## Technologies
 1. Python
-    * Pymongo
 2. Beautiful Soup
 3. Splinter
 4. Selenium
 5. Pandas
-6. Sqlalchemy
+6. SQL
+7. Sqlalchemy
     * Session
     * create_engine
     * inspect
@@ -32,13 +32,12 @@ Our team project was to create a website to  visualize marine mammal sightings. 
     * String
     * Date
     * declarative_base
-7. Flask 
+8. Flask 
     * render_template
     * jsonify
     * request
     * redirect
-8. Flask_cors
-    * CORS
+    * Flask_cors - CORS
 9. Postgres
 10. HTML & CSS
 11. Bootstrap
@@ -48,6 +47,7 @@ Our team project was to create a website to  visualize marine mammal sightings. 
     * jquery
     * Leaflet
     * Plotly
+    * amCharts 4
 13. Mapbox
 14. Heroku
 15. Github
