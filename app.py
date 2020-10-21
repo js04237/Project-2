@@ -91,10 +91,6 @@ def method():
 def orca_quick_facts():
     return render_template("orca_quick_facts.html")
 
-@app.route("/seasonal.html")
-def seasonal():
-    return render_template("seasonal.html")
-
 @app.route("/active.html")
 def active():
     return render_template("active.html")
