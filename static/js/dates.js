@@ -59,53 +59,49 @@ function buildPlots(locChoice) {
         var filter_data = {};
         var filter_value = locChoice === "Seattle, WA" ? "Seattle, WA, US" : locChoice === "Delta, BC" ? "Delta, BC, CA" : locChoice === "Port Renfrew, BC" ? "Port Renfrew, BC, CA" : locChoice === "Mayne Island, BC" ? "Mayne Island, BC, CA" : locChoice === "Victoria, BC" ? "Victoria, BC, CA" : locChoice === "Sooke, BC" ? "Sooke, BC, CA" : locChoice === "Juan de Fuca, BC" ? "Juan de Fuca, BC, CA" : locChoice === "Pender Island, BC" ? "Pender Island, BC, CA" : locChoice === "Saturna, BC" ? "Saturna, BC, CA" : "Friday Harbor, WA, US"
         Object.entries(tdata).forEach((v) => {
-            if(v.includes(filter_value)) {
+            if (v.includes(filter_value)) {
                 filter_data = tdata;
             }
         });
-        console.log(filter_value);
 
-
-        // console.log(tdata);
-        filteredData = tdata.filter(sighting=> sighting.location === filter_value)
-        console.log(filteredData)
-        // var loc = ""
-        // tdata = tdata.filter(sighting => sighting.location === loc);
-        console.log(tdata);
-        var sighted_at = filteredData.reduce(function (obj, v) {
-            obj[v.sighted_at.slice(5, -18)] = (obj[v.sighted_at.slice(5, -18)] || 0) + 1;
-            return obj;
-        }, {})
-        console.log(sighted_at)
-        months_str = Object.keys(sighted_at);
-        counts = Object.values(sighted_at);
-        months_array = ["October", "November", "December", "September", "July", "June", "August", "May", "April", "March", "February", "January"];
-
-        console.log(months_str);
-        console.log(counts);
-
-        var trace1 = {
-            x: months_str,
-            y: counts,
-            mode: 'markers',
-            marker: {
-                size: counts,
-            }
-        };
-
-        var data1 = [trace1]
-        var layout1 = {
-            title: filter_value,
-            xaxis: {
-                title: "Month"
-            },
-            yaxis: {
-                title: "Number of Sightings"
-            },
-            height: 750,
-            width: 1050
+        var filteredData = tdata.filter(sighting => sighting.location === filter_value)
+        var tableData = []
+        for (var i = 0; i < filteredData.length; i++) {
+            delete filteredData[i].id
+            delete filteredData[i].created_at
+            delete filteredData[i].orca_type
+            delete filteredData[i].quantity
+            delete filteredData[i].updated_at
+            delete filteredData[i].url
+            delete filteredData[i].description
+            delete filteredData[i].orca_pod
+            tableData.push(filteredData[i])
         }
-        Plotly.newPlot("bubble", data1, layout1);
+
+        for (var i = 0; i < tableData.length; i++) {
+            var lon = tableData[i].longitude
+            var lat = tableData[i].latitude
+            var date_time = tableData[i].sighted_at
+            var long = lon.toFixed(2)
+            var lati = lat.toFixed(2)
+            var date = date_time.slice(0, -15)
+            tableData[i].longitude = long
+            tableData[i].latitude = lati
+            tableData[i].sighted_at = date
+        }
+        // clear html table
+        var tbody = d3.select("tbody");
+        tbody.html("");
+
+        var tr = d3.select("tr");
+
+        tableData.forEach((sighting) => {
+            var row = tbody.append("tr");
+            Object.entries(sighting).forEach(([key, value]) => {
+                var cell = row.append("td");
+                cell.text(value);
+            });
+        });
     });
 };
 

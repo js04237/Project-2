@@ -95,6 +95,10 @@ def orca_quick_facts():
 def seasonal():
     return render_template("seasonal.html")
 
+@app.route("/active.html")
+def active():
+    return render_template("active.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
