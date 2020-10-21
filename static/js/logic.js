@@ -139,7 +139,7 @@ function plotSightings(response) {
 
 function updateLegend(sightingCount) {
   document.querySelector(".legend").innerHTML = [
-    "<p><h2>Sightings Count: " + "</h1></p>", 
+    "<p><h5>Sightings Count: " + "</h5></p>", 
     "<p class='orca'>Orcas: " + sightingCount.orca + "</p>",
     "<p class='grayWhale'>Gray Whales: " + sightingCount.grayWhale + "</p>",
     "<p class='porpoise'>Harbor Porpoises: " + sightingCount.porpoise + "</p>",
