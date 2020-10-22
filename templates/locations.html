@@ -2,12 +2,16 @@
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" href="#">
     <meta charset="UTF-8">
     <title>Sightings Locations</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
+    <!-- Marker Cluster CSS -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -56,7 +60,7 @@
     <div class="container-fluid">
         <section class="row">
             <div class="row justify-content-center">
-                <div class="col-12 col-xl-8 col-lg-8 col-md-6">
+                <div class="col-12 col-xl-8 col-lg-8 col-md-6 h-50">
                     <article class="description-content">
                         <h1>Where are the Sightings?</h1>
                         <hr class="my-4">
@@ -80,7 +84,10 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
     <link rel="stylesheet" href="../static/css/leaflet.extra-markers.min.css">
-
+    <!-- Marker Cluster JS -->
+    <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+    <!-- Leaflet heatmap plugin-->
+    <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
     <!-- Icons -->
     <script src="../static/js/leaflet.extra-markers.min.js"></script>
 
@@ -92,7 +99,8 @@
 
     <!-- Our JavaScript -->
     <script type="text/javascript" src="../static/js/logic.js"></script>
-
+    
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

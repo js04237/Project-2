@@ -1,10 +1,21 @@
 // Create the tile layers that will be the background of our map
 var lightMap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-  maxZoom: 12,
+  maxZoom: 10,
   id: "light-v10",
   accessToken: API_KEY
 });
+
+heatLocations = []
+
+// Create the heatmap layer
+heat = L.heatLayer(heatLocations, {
+      radius: 15,
+      blur: 30,
+      max: 0.00005
+});
+
+var sightingClusters = new L.markerClusterGroup()
 
 var layers = {
   orca: new L.LayerGroup(),
@@ -15,13 +26,13 @@ var layers = {
 
 // Create the map object with options
 var map = L.map("mapid", {
-  center: [48.5, -123.7],
-  zoom: 8,
+  center: [48.92, -123.7],
+  zoom: 7,
   layers: [
     layers.orca,
     layers.grayWhale,
     layers.porpoise,
-    layers.humpback
+    layers.humpback,
   ]
 });
 
@@ -33,7 +44,9 @@ var overlays = {
   "Orcas": layers.orca,
   "Gray Whales": layers.grayWhale,
   "Harbor Porpoises": layers.porpoise,
-  "Humpback Whales": layers.humpback
+  "Humpback Whales": layers.humpback,
+  "Cluster Map": sightingClusters,
+  "Heat Map": heat
 };
 
 // Create a control for our layers, add our overlay layers to it
@@ -113,7 +126,13 @@ function plotSightings(response) {
 
     sightingCount[speciesCode]++;
 
-    var newMarker = L.marker([lat, lon], {
+    coords = [lat, lon]
+
+    heatLocations.push(coords)
+
+    sightingClusters.addLayer(L.marker(coords))
+
+    var newMarker = L.marker(coords, {
       icon: icons[speciesCode]
     });
     
