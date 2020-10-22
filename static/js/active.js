@@ -3,14 +3,11 @@ function buildPlots(locChoice) {
     url = "/api/v1.0/mammal_sightings";
 
     d3.json(url).then(function (whaledata) {
-        console.log(whaledata);
         var tdata = whaledata.filter(d => d.hasOwnProperty("location"));
-        console.log(tdata)
         var locations = tdata.reduce(function (obj, v) {
             obj[v.location] = (obj[v.location] || 0) + 1;
             return obj;
         }, {})
-        console.log(locations);
         var sort_locations = Object.keys(locations).map(function (key) {
             return [key, locations[key]];
         });
@@ -19,7 +16,6 @@ function buildPlots(locChoice) {
         });
         top_locations = sort_locations.slice(0, 11).reverse();
 
-        console.log(top_locations);
         // delete object with no location information. 
         delete top_locations[9];
         var final_locations = []
@@ -29,9 +25,6 @@ function buildPlots(locChoice) {
             final_locations.push(substring);
             sightings.push(place[1]);
         })
-
-        console.log(final_locations);
-        console.log(sightings);
 
         var trace = {
             x: sightings,
@@ -108,7 +101,6 @@ function buildPlots(locChoice) {
 
 
 function optionChanged(locChoice) {
-    console.log(locChoice);
     buildPlots(locChoice);
 }
 function update(data) {
@@ -123,7 +115,6 @@ function init() {
         // console.log(name);
     });
     var firstLoc = locations[0];
-    console.log(firstLoc);
     buildPlots(firstLoc);
 }
 init();

@@ -5,7 +5,6 @@ function buildPlot(podChoice) {
     d3.json(url).then(function (whaledata) {
         //console.log(whaledata);
         var tdata = whaledata.filter(d => d.hasOwnProperty("orca_pod"));
-        console.log(tdata)
         j = 0
         k = 0
         l = 0
@@ -15,7 +14,6 @@ function buildPlot(podChoice) {
         jkl = 0
         for (var i = 0; i < tdata.length; i++) {
             var pod = whaledata[i].orca_pod;
-            console.log(pod)
             if (pod == "j") {
                 j = j +1;
             }
@@ -43,8 +41,6 @@ function buildPlot(podChoice) {
             return obj;
         }, {})
         delete pod_counts.null;
-        console.log(pod_counts);
-        console.log(podChoice);
         var final_data = {};
         var filter_value = podChoice === "J Pod" ?
             "j" : podChoice === "K Pod" ? "k" : 
@@ -54,10 +50,6 @@ function buildPlot(podChoice) {
                 final_data[k] = pod_counts[k];
             }
         });
-
-        console.log(filter_value)
-        console.log(final_data)
-
 
         var data_labels = [];
         var data_values = [];
@@ -82,8 +74,7 @@ function buildPlot(podChoice) {
                 text: 'Percentage of Sightings by Pod',
             },
         }
-        console.log(data1);
-        console.log(layout);
+
         Plotly.newPlot('piechart', data1, layout);
 
         var j_total = jk + jl + jkl;
@@ -120,13 +111,11 @@ function buildPlot(podChoice) {
       
           //   var layout = {barmode: 'group'};
             Plotly.newPlot('barchart', data, layout);
-    
 
     })
 };
 
 function optionChanged(podChoice) {
-    console.log(podChoice);
     buildPlot(podChoice);
 }
 function update(data) {
@@ -142,7 +131,6 @@ function init() {
         // console.log(name);
     });
     var firstPod = pod_names[0];
-    console.log(firstPod);
     buildPlot(firstPod);
 
 }
