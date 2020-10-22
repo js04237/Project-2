@@ -48,7 +48,7 @@ Our team project was to create a website to visualize marine mammal sightings. W
     * jquery
     * Leaflet
     * Plotly
-    * amCharts 4
+    * Chart.js
 13. Mapbox
 14. Heroku
 15. Github
